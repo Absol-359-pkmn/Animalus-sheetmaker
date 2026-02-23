@@ -167,16 +167,16 @@ ctx.drawImage(CScover,0,0,canvas.width,canvas.width*1.42);
 
 //create commands to copy for the game (some jobs gets exclusive commands)
 var chatpalet =
-STR + "AM<=1,1 【STR能力判定(1成功)】\\n" +
-INT + "AM<=1,1 【INT能力判定(1成功)】\\n" +
-DEX + "AM<=1,1 【DEX能力判定(1成功)】\\n" +
-"3AM<=" + (instinct+1) + ",1 【本能判定(1成功)】\\n" +
-"3AM<=" + (anthropology+1) + ",1 【人類学判定(1成功)】\\n" +
-"3AM<=" + (wisdom+1) + ",1 【知恵判定(1成功)】\\n" +
-"3AM<=" + (perception+1) + ",1 【観察判定(1成功)】\\n" +
-"3AM<=" + (listen+1) + ",1 【聴覚判定(1成功)】\\n" +
-"3AM<=" + (smell+1) + ",1 【嗅覚判定(1成功)】\\n" +
-"AA<=" + (fight+1) + " 【戦闘技能: " + attack.value + "】\\n" +
+STR + "AM<=1,1 【STR能力判定(1成功)】\n" +
+INT + "AM<=1,1 【INT能力判定(1成功)】\n" +
+DEX + "AM<=1,1 【DEX能力判定(1成功)】\n" +
+"3AM<=" + (instinct+1) + ",1 【本能判定(1成功)】\n" +
+"3AM<=" + (anthropology+1) + ",1 【人類学判定(1成功)】\n" +
+"3AM<=" + (wisdom+1) + ",1 【知恵判定(1成功)】\n" +
+"3AM<=" + (perception+1) + ",1 【観察判定(1成功)】\n" +
+"3AM<=" + (listen+1) + ",1 【聴覚判定(1成功)】\n" +
+"3AM<=" + (smell+1) + ",1 【嗅覚判定(1成功)】\n" +
+"AA<=" + (fight+1) + " 【戦闘技能: " + attack.value + "】\n" +
 "AG=t 【防御判定】\\n" +
 "AD=t 【回避判定】";
 
@@ -200,6 +200,20 @@ if(job.value == "傭兵（マーシナリー）"){
 // print the completed command palette
 document.getElementById("chat").value = chatpalet;
 
+chatpalet = [
+  `${STR}AM<=1,1 【STR能力判定(1成功)】`,
+  `${INT}AM<=1,1 【INT能力判定(1成功)】`,
+  `${DEX}AM<=1,1 【DEX能力判定(1成功)】`,
+  `3AM<=${instinct + 1},1 【本能判定(1成功)】`,
+  `3AM<=${anthropology + 1},1 【人類学判定(1成功)】`,
+  `3AM<=${wisdom + 1},1 【知恵判定(1成功)】`,
+  `3AM<=${perception + 1},1 【観察判定(1成功)】`,
+  `3AM<=${listen + 1},1 【聴覚判定(1成功)】`,
+  `3AM<=${smell + 1},1 【嗅覚判定(1成功)】`,
+  `AA<=${fight + 1} 【戦闘技能: ${attack.value}】`,
+  `AG=t 【防御判定】`,
+  `AD=t 【回避判定】`
+].join("\n");
 //create ccfolia character
 const charaData = {
   kind: "character",
@@ -253,5 +267,5 @@ function copychara() {
 
   navigator.clipboard.writeText(copyText.value);
 
-  alert("キャラクターをコピーしました！");
+  alert("キャラを出力しました！");
 }
